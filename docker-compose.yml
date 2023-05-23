@@ -1,30 +1,50 @@
+# Compose fileのバージョン指定
 version: '3'
+# どんなコンテナを立ち上げるか
 services:
-  web:
-    image: nginx:1.15.6
-    ports:
-      - "8000:80"
-    depends_on: # 追加
-      - app
-    volumes:
-      - ./docker/web/default.conf:/etc/nginx/conf.d/default.conf
-      - .:/var/www/html
-  app:
-    build: ./docker/php
-    volumes:
-     - .:/var/www/html
-    depends_on:
-      - mysql
-  mysql:
-    image: mysql:5.7
+ # laravelを動かすコンテナ
+ app:
+   # どのポートを開いて繋ぐか。下記はコンテナの80番ポートを開いて、ホストの8000番につなぐ
+   ports:
+     - "8000:80"
+   # 先ほど作ったDockerfileを使って、コンテナをビルドするという指定
+   build: ./docker/app
+   # コンテナの名前を指定
+   container_name: laravel_app
+   # コンテナとホスト側のディレクトリを同期する場所の指定。laravelのソースが入る予定の場所
+   volumes:
+     - ./src:/var/www/html
+ # MySQLを動かすコンテナ
+ db:
+   # Docker HubからMySQL5.7の公式イメージをダウンロードしてくる指定
+   image: mysql:5.7
+   container_name: laravel_db
+   # コンテナ内の環境変数を指定。環境変数を渡すとビルド時に設定してくれるDockerイメージがあるので、利用の際はDocker Hubのサイトで確認すると良い
+   environment:
+     MYSQL_ROOT_PASSWORD: root
+     MYSQL_DATABASE: laravel_db
+     MYSQL_USER: laravel_user
+     MYSQL_PASSWORD: laravel_pass
+     TZ: 'Asia/Tokyo'
+   # 起動時のコマンド
+   command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+   # ディレクトリ同期。設定ファイルとMySQLのデータが保存される場所を同期している。コンテナは基本的に起動時に変更されてもコンテナ自体が止まるとデータが消えてしまうため、保存しておきたいものはホストマシンと同期しておく必要がある。
+   volumes:
+     - ./docker/db/data:/var/lib/mysql
+     - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+   ports:
+     - 3306:3306
+ # phpmyadminを動かすコンテナ
+ phpmyadmin:
+    image: phpmyadmin/phpmyadmin
     environment:
-      MYSQL_DATABASE: ****
-      MYSQL_USER: ****
-      MYSQL_PASSWORD: ****
-      MYSQL_ROOT_PASSWORD: ****
+      # - PMA_ARBITRARY=1
+      - PMA_HOST=db
+      # - PMA_USER=laravel_user
+      # - PMA_PASSWORD=laravel_pass
+    links:
+      - db
     ports:
-      - "3306:3306"
+      - 4040:80
     volumes:
-      - mysql-data:/var/lib/mysql
-volumes:
-  mysql-data:
+      - ./phpmyadmin/sessions:/sessions
