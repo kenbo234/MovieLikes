@@ -14,3 +14,4 @@ class UserController extends Controller
       return view('top', ['users' => $users]);
     }
 }
+// aaz
