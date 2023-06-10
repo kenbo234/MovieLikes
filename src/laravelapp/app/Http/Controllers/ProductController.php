@@ -10,12 +10,6 @@ class ProductController extends Controller
     public function index(Request $request)
     {
       $products = Product::all();
-//デバッグ用
-// $sql = User::toSql();
-// echo "<pre>\n";var_dump($sql,$users);
-
-    dd($products);
-
       return view('top', ['products' => $products]);
     }
 }
