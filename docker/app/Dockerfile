@@ -8,6 +8,10 @@ ADD 000-default.conf /etc/apache2/sites-enabled/
 # Composerのインストール
 RUN cd /usr/bin && curl -s http://getcomposer.org/installer | php && ln -s /usr/bin/composer.phar /usr/bin/composer
 
+# Node.jsのインストール
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y nodejs
+
 # ミドルウェアインストール
 RUN apt-get update \
 && apt-get install -y \
