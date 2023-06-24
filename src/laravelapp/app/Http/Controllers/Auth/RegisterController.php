@@ -50,9 +50,14 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'zipcode' => ['required', 'string', 'size:7'],
+            'prefecture' => ['required', 'string'],
+            'city' => ['required', 'string'],
+            'housenumber' => ['required', 'string'],
+            'buildingname' => ['nullable', 'string'],
         ]);
     }
 
@@ -63,11 +68,23 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
     protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-    }
+{
+    $user = User::create([
+        'username' => $data['username'],
+        'email' => $data['email'],
+        'password' => Hash::make($data['password']),
+        'zipcode' => $data['zipcode'],
+        'prefecture' => $data['prefecture'],
+        'city' => $data['city'],
+        'housenumber' => $data['housenumber'],
+        'buildingname' => $data['buildingname'],
+    ]);
+
+    // if (!$user) {
+    //     dd('User creation failed:', $user);
+    // }
+dd($user);
+
+    return $user;
+}
 }
