@@ -83,7 +83,7 @@ class RegisterController extends Controller
     // if (!$user) {
     //     dd('User creation failed:', $user);
     // }
-dd($user);
+// dd($user);
 
     return $user;
 }
