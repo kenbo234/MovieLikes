@@ -1,9 +1,9 @@
-@extends('layout')
+@extends('layouts.app')
 
 {{-- タイトル --}}
 @section('title')@endsection
 
 {{-- メインコンテンツ --}}
-@section('contents')
+@section('content')
 
-@endsection('contents')
+@endsection('content')
