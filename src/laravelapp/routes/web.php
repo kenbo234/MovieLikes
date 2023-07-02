@@ -23,6 +23,7 @@ Route::get('/', function () {
 });
 
 Route::get('/top', [ProductController::class, 'index']);
+Route::get('/products/{id}', [ProductController::class, 'show']); // 商品詳細ページ
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
