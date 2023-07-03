@@ -11,7 +11,7 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-      $products = Product::paginate(9); // 1ページに9個の商品を表示するページネーションを実装
+      $products = Product::paginate(12); // 1ページに12個の商品を表示するページネーションを実装
       // dd($products);
       return view('top', ['products' => $products]);
     }
