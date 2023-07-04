@@ -20,6 +20,6 @@ class ProductController extends Controller
     {
         $product = Product::find($id); // 指定された商品IDの商品を取得
 
-        return view('products.show', ['product' => $product]);
+        return view('products.show', ['product' => $product]); // 商品詳細ページのビューに商品情報を渡す
     }
 }
