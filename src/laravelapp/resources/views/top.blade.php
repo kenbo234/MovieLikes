@@ -6,7 +6,15 @@
 {{-- メインコンテンツ --}}
 @section('content')
 <header>
-      <div class="navbar navbar-dark bg-dark box-shadow">
+  <div class="navbar navbar-dark bg-dark box-shadow">
+    <div class="container d-flex justify-content-between">
+        <a href="#" class="navbar-brand d-flex align-items-center">
+            <strong>映画たち</strong>
+        </a>
+        <button type="button" class="btn btn-primary btn-lg" style="text-decoration-color: rgb(167, 82, 82); background-color: rgb(122, 62, 182); font-weight: 700;">出品</button>
+    </div>
+</div>
+      <!-- <div class="navbar navbar-dark bg-dark box-shadow">
         <div class="container d-flex justify-content-between">
           <a href="#" class="navbar-brand d-flex align-items-center">
             <strong>映画たち</strong>
@@ -17,25 +25,10 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="#">項目1</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="#">マイページ</a>
               </li>
             </ul>
           </div>
-        </div>
-      </div>
-      <!-- <div class="navbar navbar-dark bg-dark box-shadow">
-        <div class="container d-flex justify-content-between">
-          <a href="#" class="navbar-brand d-flex align-items-center">
-            <strong>映画たち</strong>
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon">
-              <a href="#">項目1</a>
-            </span>
-          </button>
         </div>
       </div> -->
     </header>
