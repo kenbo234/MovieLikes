@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
@@ -23,6 +24,9 @@ Route::get('/', function () {
 });
 
 Route::get('/top', [ProductController::class, 'index']);
+Route::get('/products/{id}', [ProductController::class, 'show']); // 商品詳細ページ
+Route::get('/product/create', [ProductController::class, 'create'])->name('product.create'); // 商品登録ページ
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
