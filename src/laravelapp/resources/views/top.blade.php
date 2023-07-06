@@ -6,31 +6,17 @@
 {{-- メインコンテンツ --}}
 @section('content')
 <header>
-  <div class="navbar navbar-dark bg-dark box-shadow">
-    <div class="container d-flex justify-content-between">
-        <a href="#" class="navbar-brand d-flex align-items-center">
-            <strong>映画たち</strong>
-        </a>
-        <button type="button" class="btn btn-primary btn-lg" style="text-decoration-color: rgb(167, 82, 82); background-color: rgb(122, 62, 182); font-weight: 700;">出品</button>
-    </div>
-</div>
-      <!-- <div class="navbar navbar-dark bg-dark box-shadow">
-        <div class="container d-flex justify-content-between">
-          <a href="#" class="navbar-brand d-flex align-items-center">
-            <strong>映画たち</strong>
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="#">マイページ</a>
-              </li>
-            </ul>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+          <div class="container d-flex justify-content-between">
+              <a href="#" class="navbar-brand d-flex align-items-center">
+                  <strong>映画たち</strong>
+              </a>
+              <a href="{{ route('product.create') }}" class="btn btn-primary btn-lg"
+                 style="background-color: rgb(122, 62, 182); font-weight: 700; border-width: 4px; border-color: rgb(122, 62, 182); float: none;">
+                  出品
+              </a>
           </div>
-        </div>
-      </div> -->
+      </div>
     </header>
     <main role="main">
      <div class="album py-5 bg-light" >
