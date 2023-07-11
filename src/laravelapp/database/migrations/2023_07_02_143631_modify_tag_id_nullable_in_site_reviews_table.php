@@ -26,7 +26,7 @@ class ModifyTagIdNullableInSiteReviewsTable extends Migration
     public function down()
     {
         Schema::table('site_reviews', function (Blueprint $table) {
-            //
+            $table->foreignId('tag_id')->change();
         });
     }
 }

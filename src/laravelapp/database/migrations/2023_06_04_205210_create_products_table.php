@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('description')->nullable(false)->comment('商品説明');
             $table->integer('price')->nullable(false)->comment('商品価格');
             $table->foreignId('user_id')->nullable(false)->constrained('users'); //外部キー制約
-            $table->foreignId('categoty_id')->nullable(false)->constrained('categories'); //外部キー制約
+            $table->foreignId('category_id')->nullable(false)->constrained('categories'); //外部キー制約
             $table->foreignId('tag_id')->constrained('tags'); //外部キー制約
             $table->timestamps();
         });
