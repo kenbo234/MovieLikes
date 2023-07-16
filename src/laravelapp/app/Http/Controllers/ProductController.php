@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\User;
 use App\Models\Category;
 use App\Models\Tag;
 
@@ -56,6 +57,7 @@ class ProductController extends Controller
         $product->tag_id = $validatedData['tag_id'];
         $product->save();
 
+        dd($product);
         // 新しいタグが入力されている場合は保存
             if ($request->has('new_tag')) {
                 $tag = new Tag();

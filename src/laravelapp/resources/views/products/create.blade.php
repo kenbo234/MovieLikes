@@ -42,7 +42,7 @@
         </div>
 
         <div>
-            <label for="new_tag">タグ</label>
+            <label for="new_tag">新しいタグ</label>
             <input type="text" name="new_tag" id="new_tag">
         </div>
 
