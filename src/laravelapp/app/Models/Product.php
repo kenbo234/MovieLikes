@@ -13,7 +13,6 @@ class Product extends Model
         'name',
         'description',
         'price',
-        'zipcode',
         'user_id',
         'category_id',
         'tag_id',
@@ -29,9 +28,8 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function tag()
+    public function tags()
     {
-        return $this->belongsTo(Tag::class);
+        return $this->belongsToMany(Tag::class, 'product_tag', 'product_id', 'tag_id');
     }
-
 }

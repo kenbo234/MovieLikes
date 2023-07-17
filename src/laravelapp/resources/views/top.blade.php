@@ -1,8 +1,5 @@
 @extends('layouts.app')
 
-{{-- タイトル --}}
-@section('title')@endsection
-
 {{-- メインコンテンツ --}}
 @section('content')
 <header>
@@ -11,7 +8,7 @@
               <a href="#" class="navbar-brand d-flex align-items-center">
                   <strong>映画たち</strong>
               </a>
-              <a href="{{ route('product.create') }}" class="btn btn-primary btn-lg"
+              <a href="{{ route('products.create') }}" class="btn btn-primary btn-lg"
                  style="background-color: rgb(122, 62, 182); font-weight: 700; border-width: 4px; border-color: rgb(122, 62, 182); float: none;">
                   出品
               </a>

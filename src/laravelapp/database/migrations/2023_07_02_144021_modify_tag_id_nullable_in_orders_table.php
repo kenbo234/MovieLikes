@@ -26,7 +26,7 @@ class ModifyTagIdNullableInOrdersTable extends Migration
     public function down()
     {
         Schema::table('orders', function (Blueprint $table) {
-            //
+            $table->foreignId('tag_id')->change();
         });
     }
 }
