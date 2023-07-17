@@ -23,10 +23,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/top', [ProductController::class, 'index']);
-Route::get('/products/{id}', [ProductController::class, 'show']); // 商品詳細ページ
-Route::get('/product/create', [ProductController::class, 'create'])->name('product.create'); // 商品登録ページ
-Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+Route::get('/top', [ProductController::class, 'index'])->name('products.index');
+// Route::get('/products/{id}', [ProductController::class, 'show']); // 商品詳細ページ
+Route::get('/product/create', [ProductController::class, 'create'])->name('products.create'); // 商品登録ページ
+Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

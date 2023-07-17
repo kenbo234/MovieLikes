@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="{{ route('products.store') }}" method="POST">
+    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div>
@@ -42,9 +42,39 @@
         </div>
 
         <div>
-            <label for="new_tag">新しいタグ</label>
-            <input type="text" name="new_tag" id="new_tag">
+            <label for="tag_id">タグ</label>
+            <select name="tag_id[]" id="tag_id" >
+                <option value="">タグを選択してください</option>
+                @foreach($tags as $tag)
+                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                @endforeach
+            </select>
+            @error('tag_id')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
         </div>
+
+        <div>
+            <label for="new_tag">新しいタグ</label>
+            <input type="text" name="new_tag" id="new_tag" placeholder="任意のタグを入力してください">
+            @error('new_tag')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+
+        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+              <ul>
+               @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+               @endforeach
+              </ul>
+            </div>
+@endif
+
 
         <!-- 他の商品情報の入力フォームを追加 -->
 
