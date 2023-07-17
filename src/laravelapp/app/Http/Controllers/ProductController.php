@@ -17,15 +17,15 @@ class ProductController extends Controller
     {
         $products = Product::paginate(12); // 1ページに12個の商品を表示するページネーションを実装
         // dd($products);
-        return view('top', ['products' => $products]);
+        return view('top', compact('products'));
     }
 
-    // public function show($id)
-    // {
-    //     $product = Product::find($id); // 指定された商品IDの商品を取得
+    public function show($id)
+    {
+        $product = Product::findOrFail($id); // 指定された商品IDの商品を取得,findOrFailで例外も処理
 
-    //     return view('products.show', ['product' => $product]); // 商品詳細ページのビューに商品情報を渡す
-    // }
+        return view('products.show', compact('product')); // 商品詳細ページのビューに商品情報を渡す
+    }
 
     public function create()
     {
