@@ -47,13 +47,12 @@ class ProductController extends Controller
             'price' => ['required' , 'numeric'],
             'user_id' => ['required', 'exists:users,id'],
             'category_id' => ['required', 'exists:categories,id'],
-            // 'tag_id' => 'nullable|array', // タグIDを配列で受け取る
-            // 'tag_id.*' => ['exists:tags,id'], // 選択されたタグIDが存在することを確認
-            'new_tag' => ['nullable' , 'string']
+            'tags' => 'nullable|array',
+            'tags.*' => 'nullable|string', // タグの入力値は文字列としてバリデーション
             
         ]);
 
-        
+        // dd($validatedData); // バリデートされたデータを確認
 
         $user_id = auth()->user()->id; // ログインユーザーのIDを取得
 
@@ -70,21 +69,28 @@ class ProductController extends Controller
         $product->save();
     
         // タグの関連付け
-        if ($request->has('tag_id')) {
-            $product->tags()->attach($request->input('tag_id'));
-        }
-    
-        // 新しいタグが入力されている場合は保存
-        if ($request->has('new_tag')) {
-            $tag = new Tag();
-            $tag->name = $request->input('new_tag');
-            $tag->save();
-            $product->tags()->attach($tag->id);
-        }
+        if ($request->has('tags')) {
+            $tags = $validatedData['tags'];
+        
+            foreach ($tags as $tag) {
+                    if ($tag !== null && $tag !== '') { // タグ名が空でない場合のみ保存
+
+                        // タグ名がテーブルに存在しない場合のみ新規作成
+                        if (!Tag::where('name', $tag)->exists()) {
+                            $newTag = new Tag();
+                            $newTag->name = $tag;
+                            $newTag->save();
+                            $product->tags()->attach($newTag->id);
+                        }
+                    }
+                }
+            }
+
+        dd($product); // 保存された商品データを確認
     
         return redirect()->route('products.index')->with('success', '商品が出品されました');
 
-        dd(session()->all());
+        // dd(session()->all());
     }
 
 }
