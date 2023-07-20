@@ -71,20 +71,21 @@ class ProductController extends Controller
         // タグの関連付け
         if ($request->has('tags')) {
             $tags = $validatedData['tags'];
+            $tagIds = [];
         
             foreach ($tags as $tag) {
-                    if ($tag !== null && $tag !== '') { // タグ名が空でない場合のみ保存
-
-                        // タグ名がテーブルに存在しない場合のみ新規作成
-                        if (!Tag::where('name', $tag)->exists()) {
-                            $newTag = new Tag();
-                            $newTag->name = $tag;
-                            $newTag->save();
-                            $product->tags()->attach($newTag->id);
-                        }
-                    }
+                if ($tag !== null && $tag !== '') { // タグ名が空でない場合のみ保存
+        
+                    // タグ名がテーブルに存在しない場合のみ新規作成
+                    $tagModel = Tag::firstOrCreate(['name' => $tag]);
+        
+                    // 中間テーブルにタグを関連付け（既に関連付けられている場合は重複しないように）
+                    $tagIds[] = $tagModel->id;
                 }
             }
+        
+            $product->tags()->syncWithoutDetaching($tagIds);
+        }
 
         dd($product); // 保存された商品データを確認
     
