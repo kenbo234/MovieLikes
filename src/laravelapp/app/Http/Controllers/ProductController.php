@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Pagination\Paginator;
 
 class ProductController extends Controller
@@ -87,11 +87,28 @@ class ProductController extends Controller
             $product->tags()->syncWithoutDetaching($tagIds);
         }
 
-        dd($product); // 保存された商品データを確認
+        // dd($product); // 保存された商品データを確認
     
         return redirect()->route('products.index')->with('success', '商品が出品されました');
+    }
 
-        // dd(session()->all());
+    public function purchase($id)
+    {
+        // ログインしていないユーザーの場合、ログインページにリダイレクトさせる
+            if (!Auth::check()) {
+                return Redirect::route('login')->with('error', 'このページを閲覧するにはログインが必要です。');
+            }
+        
+        // 購入処理を行うコードを追加
+    
+        // 例えば、購入した商品をユーザーの購入履歴に追加するなどの処理を行うことが考えられます。
+    
+        return redirect()->route('products.show', ['id' => $id])->with('success', '商品を購入しました');
+    }
+
+    public function __construct()
+    {
+        $this->middleware('auth')->only('create');
     }
 
 }

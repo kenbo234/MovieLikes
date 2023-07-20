@@ -16,9 +16,15 @@
         
         <!-- 他の商品情報を表示するためのコードを追加 -->
         
-        {{-- <form action="{{ route('products.purchase', ['id' => $product->id]) }}" method="POST">
+        <form action="{{ route('products.purchase', ['id' => $product->id]) }}" method="POST">
             @csrf
             <button type="submit" class="btn btn-primary">購入する</button>
-        </form> --}}
+        </form>
+
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
     </div>
 @endsection
