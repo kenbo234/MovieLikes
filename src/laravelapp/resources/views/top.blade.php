@@ -28,8 +28,7 @@
                   <p class="card-text">{{ $product->name }}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">購入</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">お気に入り</button>
+                      <a href="{{ route('products.show', ['id' => $product->id]) }}" class="btn btn-sm btn-outline-secondary">詳細</a>                      <button type="button" class="btn btn-sm btn-outline-secondary">お気に入り</button>
                     </div>
                   </div>
                 </div>

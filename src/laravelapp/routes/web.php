@@ -24,7 +24,8 @@ Route::get('/', function () {
 });
 
 Route::get('/top', [ProductController::class, 'index'])->name('products.index');
-// Route::get('/products/{id}', [ProductController::class, 'show']); // 商品詳細ページ
+Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show'); // 商品詳細ページ
+Route::post('/products/{id}/purchase', [ProductController::class, 'purchase'])->name('products.purchase')->middleware('auth');
 Route::get('/product/create', [ProductController::class, 'create'])->name('products.create'); // 商品登録ページ
 Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
 Auth::routes();

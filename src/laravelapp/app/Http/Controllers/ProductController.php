@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Pagination\Paginator;
 
 class ProductController extends Controller
@@ -17,15 +17,15 @@ class ProductController extends Controller
     {
         $products = Product::paginate(12); // 1ページに12個の商品を表示するページネーションを実装
         // dd($products);
-        return view('top', ['products' => $products]);
+        return view('top', compact('products'));
     }
 
-    // public function show($id)
-    // {
-    //     $product = Product::find($id); // 指定された商品IDの商品を取得
+    public function show($id)
+    {
+        $product = Product::findOrFail($id); // 指定された商品IDの商品を取得,findOrFailで例外も処理
 
-    //     return view('products.show', ['product' => $product]); // 商品詳細ページのビューに商品情報を渡す
-    // }
+        return view('products.show', compact('product')); // 商品詳細ページのビューに商品情報を渡す
+    }
 
     public function create()
     {
@@ -47,13 +47,12 @@ class ProductController extends Controller
             'price' => ['required' , 'numeric'],
             'user_id' => ['required', 'exists:users,id'],
             'category_id' => ['required', 'exists:categories,id'],
-            // 'tag_id' => 'nullable|array', // タグIDを配列で受け取る
-            // 'tag_id.*' => ['exists:tags,id'], // 選択されたタグIDが存在することを確認
-            'new_tag' => ['nullable' , 'string']
+            'tags' => 'nullable|array',
+            'tags.*' => 'nullable|string', // タグの入力値は文字列としてバリデーション
             
         ]);
 
-        
+        // dd($validatedData); // バリデートされたデータを確認
 
         $user_id = auth()->user()->id; // ログインユーザーのIDを取得
 
@@ -70,21 +69,46 @@ class ProductController extends Controller
         $product->save();
     
         // タグの関連付け
-        if ($request->has('tag_id')) {
-            $product->tags()->attach($request->input('tag_id'));
+        if ($request->has('tags')) {
+            $tags = $validatedData['tags'];
+            $tagIds = [];
+        
+            foreach ($tags as $tag) {
+                if ($tag !== null && $tag !== '') { // タグ名が空でない場合のみ保存
+        
+                    // タグ名がテーブルに存在しない場合のみ新規作成
+                    $tagModel = Tag::firstOrCreate(['name' => $tag]);
+        
+                    // 中間テーブルにタグを関連付け（既に関連付けられている場合は重複しないように）
+                    $tagIds[] = $tagModel->id;
+                }
+            }
+        
+            $product->tags()->syncWithoutDetaching($tagIds);
         }
-    
-        // 新しいタグが入力されている場合は保存
-        if ($request->has('new_tag')) {
-            $tag = new Tag();
-            $tag->name = $request->input('new_tag');
-            $tag->save();
-            $product->tags()->attach($tag->id);
-        }
+
+        // dd($product); // 保存された商品データを確認
     
         return redirect()->route('products.index')->with('success', '商品が出品されました');
+    }
 
-        dd(session()->all());
+    public function purchase($id)
+    {
+        // ログインしていないユーザーの場合、ログインページにリダイレクトさせる
+            if (!Auth::check()) {
+                return Redirect::route('login')->with('error', 'このページを閲覧するにはログインが必要です。');
+            }
+        
+        // 購入処理を行うコードを追加
+    
+        // 例えば、購入した商品をユーザーの購入履歴に追加するなどの処理を行うことが考えられます。
+    
+        return redirect()->route('products.show', ['id' => $id])->with('success', '商品を購入しました');
+    }
+
+    public function __construct()
+    {
+        $this->middleware('auth')->only('create');
     }
 
 }

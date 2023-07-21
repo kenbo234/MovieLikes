@@ -42,25 +42,13 @@
         </div>
 
         <div>
-            <label for="tag_id">タグ</label>
-            <select name="tag_id[]" id="tag_id" >
-                <option value="">タグを選択してください</option>
-                @foreach($tags as $tag)
-                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-                @endforeach
-            </select>
-            @error('tag_id')
+            <label for="tags">タグ</label>
+            <input type="text" name="tags[]" id="tags" placeholder="タグを入力してください">
+            @error('tags')
                 <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
-
-        <div>
-            <label for="new_tag">新しいタグ</label>
-            <input type="text" name="new_tag" id="new_tag" placeholder="任意のタグを入力してください">
-            @error('new_tag')
-                <span class="text-danger">{{ $message }}</span>
-            @enderror
-        </div>
+        
 
         <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
 
@@ -73,7 +61,7 @@
                @endforeach
               </ul>
             </div>
-@endif
+        @endif
 
 
         <!-- 他の商品情報の入力フォームを追加 -->
