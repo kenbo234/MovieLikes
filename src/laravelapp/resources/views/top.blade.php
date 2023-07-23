@@ -1,5 +1,20 @@
 @extends('layouts.app')
+<head>
+  <style>
+      /* ここにカスタムCSSを記述 */
+      .custom-search-form {
+          flex: 1;
+      }
 
+      .custom-search-input {
+          width: 40%;
+      }
+      /* 検索アイコンのフォントサイズをフォームの高さに合わせる */
+      .custom-search-input .btn {
+          font-size: 160%;
+      }
+  </style>
+</head>
 {{-- メインコンテンツ --}}
 @section('content')
 <header>
@@ -8,6 +23,14 @@
               <a href="#" class="navbar-brand d-flex align-items-center">
                   <strong>映画たち</strong>
               </a>
+              <form action="{{ route('products.search') }}" method="GET" class="form-inline my-2 my-lg-0 custom-search-input">
+                  <div class="input-group">
+                      <input type="text" name="keyword" class="form-control" placeholder="キーワードを入力してください" aria-label="Search">
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-light" type="submit"><i class="fa fa-search"></i></button>
+                      </div>
+                  </div>
+              </form>
               <a href="{{ route('products.create') }}" class="btn btn-primary btn-lg"
                  style="background-color: rgb(122, 62, 182); font-weight: 700; border-width: 4px; border-color: rgb(122, 62, 182); float: none;">
                   出品

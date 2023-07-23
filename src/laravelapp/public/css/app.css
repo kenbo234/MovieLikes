@@ -11982,3 +11982,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.custom-search-form {
+  flex: 1;
+}
+
+.custom-search-input {
+  width: 200%;
+}
