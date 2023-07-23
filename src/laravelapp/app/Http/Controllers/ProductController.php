@@ -111,4 +111,19 @@ class ProductController extends Controller
         $this->middleware('auth')->only('create');
     }
 
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+    
+        // キーワードを使って検索処理を実装
+        $products = Product::where('name', 'LIKE', '%'.$keyword.'%')
+            ->orWhere('description', 'LIKE', '%'.$keyword.'%')
+            ->orWhereHas('tags', function ($query) use ($keyword) {
+                $query->where('name', 'LIKE', '%'.$keyword.'%');
+            })
+            ->paginate(12);
+    
+        return view('top', compact('products'));
+    }
+
 }
