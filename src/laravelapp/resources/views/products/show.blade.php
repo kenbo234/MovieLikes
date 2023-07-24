@@ -18,7 +18,7 @@
         
         <form action="{{ route('products.purchase', ['id' => $product->id]) }}" method="POST">
             @csrf
-            <button type="submit" class="btn btn-primary">購入する</button>
+            <button type="submit" class="btn btn-success">購入する</button>
         </form>
 
         @if(session('success'))

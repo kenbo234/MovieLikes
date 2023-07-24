@@ -36,4 +36,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Tag::class, 'product_tag', 'product_id', 'tag_id');
     }
+
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class, 'product_id');
+    }
 }
