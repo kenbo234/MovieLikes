@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Auth\User;
 use App\Models\Product;
+use App\Models\Purchase;
 
 class MyPageController extends Controller
 {
@@ -78,6 +79,14 @@ class MyPageController extends Controller
         $product->delete();
 
         return redirect()->route('mypage.products')->with('success', '商品を出品取り消しました');
+    }
+
+    public function purchases()
+    {
+        $user = Auth::user();
+        $purchases = Purchase::where('user_id', $user->id)->orderByDesc('purchased_at')->get();
+
+        return view('mypage.purchases', compact('purchases'));
     }
 
 

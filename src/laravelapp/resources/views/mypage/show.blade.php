@@ -12,8 +12,9 @@
         </div>
     @endif
 </div>
-<div class="container">
+<div class="container mt-3">
     <a href="{{ route('mypage.products') }}" class="btn btn-primary">出品した商品</a>
+    <a href="{{ route('mypage.purchases') }}" class="btn btn-success">購入履歴</a>
     
 
 </div>
