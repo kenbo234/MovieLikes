@@ -30,6 +30,8 @@ Route::get('/top', [ProductController::class, 'index'])->name('products.index');
 Route::get('/mypage', [MyPageController::class, 'show'])->name('mypage.show'); // マイページ
 Route::get('/mypage/edit', [MyPageController::class, 'edit'])->name('mypage.edit'); // マイページ編集
 Route::post('/mypage/update', [MyPageController::class, 'update'])->name('mypage.update'); 
+Route::get('/mypage/products', [MyPageController::class, 'products'])->name('mypage.products');// 出品履歴
+Route::post('/mypage/products/{id}/cancel', [MyPageController::class, 'cancelProduct'])->name('mypage.product.cancel');
 
 Route::get('/products/search',[ProductController::class, 'search'])->name('products.search'); // 検索
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show'); // 商品詳細ページ

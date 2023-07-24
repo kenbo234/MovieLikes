@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Auth\User;
+use App\Models\Product;
 
 class MyPageController extends Controller
 {
@@ -50,6 +51,33 @@ class MyPageController extends Controller
         $user->save();
     
         return redirect()->route('mypage.show')->with('success', 'プロフィールを更新しました');
+    }
+
+    public function products()
+    {
+        $user = Auth::user();
+        $products = $user->products;
+    
+        return view('mypage.products', compact('products'));
+    }
+
+    public function cancelProduct($id)
+    {
+        $product = Product::find($id);
+
+        if (!$product) {
+            return redirect()->route('mypage.products')->with('error', '商品が見つかりません');
+        }
+
+        // 商品がログインユーザーのものかどうかを確認
+        if ($product->user_id !== Auth::user()->id) {
+            return redirect()->route('mypage.products')->with('error', 'この商品はあなたのものではありません');
+        }
+
+        // 商品を論理削除
+        $product->delete();
+
+        return redirect()->route('mypage.products')->with('success', '商品を出品取り消しました');
     }
 
 
