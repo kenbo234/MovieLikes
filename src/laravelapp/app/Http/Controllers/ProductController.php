@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Tag;
+use App\Models\Purchase;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Pagination\Paginator;
@@ -15,8 +16,7 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $products = Product::paginate(12); // 1ページに12個の商品を表示するページネーションを実装
-        // dd($products);
+        $products = Product::where('is_purchased', false)->paginate(12); // 購入されてない商品を1ページに12個の商品を表示するページネーションを実装
         return view('top', compact('products'));
     }
 
@@ -100,10 +100,27 @@ class ProductController extends Controller
             }
         
         // 購入処理を行うコードを追加
+        $product = Product::find($id);
+
+        if (!$product) {
+            return redirect()->route('products.show', ['id' => $id])->with('error', '商品が見つかりません');
+        }
+
+        $user = Auth::user();
+
+        // 購入情報を保存
+        $purchase = new Purchase();
+        $purchase->user_id = $user->id;
+        $purchase->product_id = $product->id;
+        $purchase->price = $product->price;
+        $purchase->purchased_at = now();
+        $purchase->save();
     
-        // 例えば、購入した商品をユーザーの購入履歴に追加するなどの処理を行うことが考えられます。
+        // 商品のフラグを更新
+        $product->is_purchased = true;
+        $product->save();
     
-        return redirect()->route('products.show', ['id' => $id])->with('success', '商品を購入しました');
+        return redirect()->route('mypage.purchases', ['id' => $id])->with('success', '商品を購入しました');
     }
 
     public function __construct()
