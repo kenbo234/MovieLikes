@@ -11987,5 +11987,8 @@ textarea.form-control-lg {
 }
 
 .custom-search-input {
-  width: 200%;
+  width: 40%;
+}
+.custom-search-input .btn {
+  font-size: 160%;
 }
