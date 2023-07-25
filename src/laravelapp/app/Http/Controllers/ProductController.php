@@ -119,7 +119,7 @@ class ProductController extends Controller
     
         
     
-        return redirect()->route('products.show', ['id' => $id])->with('success', '商品を購入しました');
+        return redirect()->route('mypage.purchases', ['id' => $id])->with('success', '商品を購入しました');
     }
 
     public function __construct()
