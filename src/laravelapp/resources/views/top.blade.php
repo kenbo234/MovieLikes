@@ -1,6 +1,6 @@
 @extends('layouts.app')
 <head>
-  <style>
+  {{-- <style>
       /* ここにカスタムCSSを記述 */
       .custom-search-form {
           flex: 1;
@@ -13,7 +13,7 @@
       .custom-search-input .btn {
           font-size: 160%;
       }
-  </style>
+  </style> --}}
 </head>
 {{-- メインコンテンツ --}}
 @section('content')
