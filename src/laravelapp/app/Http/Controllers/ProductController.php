@@ -16,8 +16,7 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $products = Product::paginate(12); // 1ページに12個の商品を表示するページネーションを実装
-        // dd($products);
+        $products = Product::where('is_purchased', false)->paginate(12); // 購入されてない商品を1ページに12個の商品を表示するページネーションを実装
         return view('top', compact('products'));
     }
 
@@ -117,7 +116,9 @@ class ProductController extends Controller
         $purchase->purchased_at = now();
         $purchase->save();
     
-        
+        // 商品のフラグを更新
+        $product->is_purchased = true;
+        $product->save();
     
         return redirect()->route('mypage.purchases', ['id' => $id])->with('success', '商品を購入しました');
     }
