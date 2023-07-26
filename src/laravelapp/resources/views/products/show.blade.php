@@ -2,16 +2,16 @@
 
 @section('content')
     <div class="container">
-        <h1>{{ $product->name }}</h1>
-        <p>{{ $product->description }}</p>
-        <p>価格: {{ $product->price }}</p>
-
         <!-- 画像表示の追加部分 -->
         @if ($product->images->isNotEmpty())
-            <img src="{{ asset('storage/' . $product->images->first()->image_url) }}" alt="商品画像">
+            <img src="{{ asset('storage/' . $product->images->first()->image_url) }}" alt="商品画像" style="max-width: 500px; max-height: 500px; display: block; margin: 0 auto;">
         @else
             <p>画像はありません</p>
         @endif
+
+        <h1>{{ $product->name }}</h1>
+        <p>{{ $product->description }}</p>
+        <p>価格: {{ $product->price }}</p>
 
         <h4>タグ:</h4>
         <ul>
