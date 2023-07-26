@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\Purchase;
+use App\Models\Image;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Pagination\Paginator;
@@ -49,6 +51,7 @@ class ProductController extends Controller
             'category_id' => ['required', 'exists:categories,id'],
             'tags' => 'nullable|array',
             'tags.*' => 'nullable|string', // タグの入力値は文字列としてバリデーション
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // 画像のバリデーション
             
         ]);
 
@@ -87,7 +90,15 @@ class ProductController extends Controller
             $product->tags()->syncWithoutDetaching($tagIds);
         }
 
-        // dd($product); // 保存された商品データを確認
+        // 画像をアップロードして保存先のパスを取得
+        $imagePath = $request->file('image')->store('images', 'public');
+
+        // Imageモデルに新しいレコードを作成し、データベースに保存
+        $image = new Image();
+        $image->user_id = $user_id;
+        $image->product_id = $product->id;
+        $image->image_url = $imagePath;
+        $image->save();
     
         return redirect()->route('products.index')->with('success', '商品が出品されました');
     }
