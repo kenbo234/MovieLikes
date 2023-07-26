@@ -93,12 +93,17 @@ class ProductController extends Controller
         // 画像をアップロードして保存先のパスを取得
         $imagePath = $request->file('image')->store('images', 'public');
 
+
         // Imageモデルに新しいレコードを作成し、データベースに保存
         $image = new Image();
         $image->user_id = $user_id;
         $image->product_id = $product->id;
         $image->image_url = $imagePath;
         $image->save();
+
+        // ここで$product->image_idに$image->idを設定する
+        $product->image_id = $image->id;
+        $product->save();
     
         return redirect()->route('products.index')->with('success', '商品が出品されました');
     }

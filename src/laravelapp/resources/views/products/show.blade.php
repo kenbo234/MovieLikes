@@ -6,6 +6,13 @@
         <p>{{ $product->description }}</p>
         <p>価格: {{ $product->price }}</p>
 
+        <!-- 画像表示の追加部分 -->
+        @if ($product->images->isNotEmpty())
+            <img src="{{ asset('storage/' . $product->images->first()->image_url) }}" alt="商品画像">
+        @else
+            <p>画像はありません</p>
+        @endif
+
         <h4>タグ:</h4>
         <ul>
             @foreach ($product->tags as $tag)

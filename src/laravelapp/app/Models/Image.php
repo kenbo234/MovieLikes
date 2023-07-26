@@ -12,7 +12,7 @@ class Image extends Model
     protected $fillable = [
         'user_id',
         'product_id',
-        'image_url',
+        'image_url'
     ];
 
     public function user()
@@ -22,6 +22,6 @@ class Image extends Model
 
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class, 'product_id');
     }
 }
