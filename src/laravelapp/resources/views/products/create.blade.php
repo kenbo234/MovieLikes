@@ -49,6 +49,10 @@
             @enderror
         </div>
         
+        <div class="form-group">
+            <label for="image">画像</label>
+            <input type="file" name="image" id="image" class="form-control-file" accept="image/*" required>
+        </div>
 
         <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
 
