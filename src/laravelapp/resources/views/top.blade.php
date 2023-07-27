@@ -39,6 +39,11 @@
       </div>
     </header>
     <main role="main">
+      @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
      <div class="album py-5 bg-light" >
         <div class="container">
 

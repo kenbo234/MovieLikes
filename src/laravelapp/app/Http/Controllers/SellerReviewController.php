@@ -14,7 +14,7 @@ class SellerReviewController extends Controller
         $product = Product::findOrFail($product_id);
 
         // 出品者へのレビューフォームを表示
-        return view('seller-review-form', compact('product'));
+        return view('show_seller_review_form', compact('product'));
     }
 
     public function saveReview(Request $request)
@@ -40,7 +40,7 @@ class SellerReviewController extends Controller
         $review->save();
 
         // レビューが保存された後のリダイレクト先を指定
-        return redirect()->route('product.show', ['id' => $validatedData['product_id']])
+        return redirect()->route('products.show', ['id' => $validatedData['product_id']])
             ->with('success', 'レビューが保存されました');
     }
 }

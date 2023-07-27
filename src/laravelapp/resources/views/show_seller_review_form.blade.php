@@ -11,7 +11,7 @@
             </div>
         @endif
 
-        <form action="{{ route('save_review') }}" method="POST">
+        <form action="{{ route('save_seller_review') }}" method="POST">
             @csrf
             <input type="hidden" name="product_id" value="{{ $product->id }}">
             
