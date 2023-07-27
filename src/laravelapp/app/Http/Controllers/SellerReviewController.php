@@ -40,7 +40,6 @@ class SellerReviewController extends Controller
         $review->save();
 
         // レビューが保存された後のリダイレクト先を指定
-        return redirect()->route('products.show', ['id' => $validatedData['product_id']])
-            ->with('success', 'レビューが保存されました');
+        return redirect()->route('products.index')->with('success', 'レビューが保存されました');
     }
 }
