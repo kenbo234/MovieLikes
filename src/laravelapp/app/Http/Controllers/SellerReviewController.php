@@ -26,13 +26,16 @@ class SellerReviewController extends Controller
             // 他に評価に関するバリデーションルールを追加する場合はここに記述
         ]);
 
-        // ログインユーザーのIDを取得
-        $user_id = auth()->user()->id;
+        // 商品情報を取得
+        $product = Product::findOrFail($validatedData['product_id']);
+
+        // 出品者のIDを取得
+        $seller_id = $product->user_id;
 
         // レビューを保存
         $review = new SellerReview();
         $review->product_id = $validatedData['product_id'];
-        $review->user_id = $user_id; // ログインユーザーのIDを保存
+        $review->user_id = $seller_id; // 出品者のIDを保存
         $review->rating = $validatedData['rating'];
         // 他のレビュー情報を保存する場合はここに追加
 
@@ -42,4 +45,21 @@ class SellerReviewController extends Controller
         // レビューが保存された後のリダイレクト先を指定
         return redirect()->route('products.index')->with('success', 'レビューが保存されました');
     }
+
+    public function getAverageRating($user_id)
+    {
+        // 出品者のレビューを取得
+        $reviews = SellerReview::where('user_id', $user_id)->get();
+    
+        // レビューがない場合は0を返す
+        if ($reviews->isEmpty()) {
+            return 0;
+        }
+    
+        // レビューの平均評価を計算
+        $averageRating = $reviews->avg('rating');
+    
+        return $averageRating;
+    }
+    
 }
