@@ -136,7 +136,7 @@ class ProductController extends Controller
         $product->is_purchased = true;
         $product->save();
     
-        return redirect()->route('mypage.purchases', ['id' => $id])->with('success', '商品を購入しました');
+        return redirect()->route('show_seller_review_form', ['product_id' => $id])->with('success', '商品を購入しました');
     }
 
     public function __construct()

@@ -61,4 +61,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Image::class);
     }
+
+    // 出品者への評価とのリレーション
+    public function sellerReviews()
+    {
+        return $this->hasMany(SellerReview::class, 'user_id');
+    }
 }

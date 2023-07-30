@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyPageController;
+use App\Http\Controllers\SellerReviewController;
 
 
 
@@ -34,10 +35,14 @@ Route::get('/mypage/products', [MyPageController::class, 'products'])->name('myp
 Route::post('/mypage/products/{id}/cancel', [MyPageController::class, 'cancelProduct'])->name('mypage.product.cancel');
 Route::get('/mypage/purchases', [MyPageController::class, 'purchases'])->name('mypage.purchases'); // 購入履歴
 
+Route::get('/show_seller_review_form/{product_id}', [SellerReviewController::class, 'showReviewForm'])->name('show_seller_review_form'); // 出品者へのレビュー
+Route::post('/save_seller_review', [SellerReviewController::class, 'saveReview'])->name('save_seller_review');
+
+
 
 Route::get('/products/search',[ProductController::class, 'search'])->name('products.search'); // 検索
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show'); // 商品詳細ページ
-Route::post('/products/{id}/purchase', [ProductController::class, 'purchase'])->name('products.purchase')->middleware('auth');
+Route::post('/products/{id}/purchase', [ProductController::class, 'purchase'])->name('products.purchase')->middleware('auth'); // 購入処理
 Route::get('/product/create', [ProductController::class, 'create'])->name('products.create'); // 商品登録ページ
 Route::post('/products/store', [ProductController::class, 'store'])->name('products.store'); 
 Auth::routes();

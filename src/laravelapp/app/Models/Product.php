@@ -47,4 +47,10 @@ class Product extends Model
     {
         return $this->hasMany(Image::class, 'product_id');
     }
+
+    // 出品者への評価とのリレーション
+    public function sellerReviews()
+    {
+        return $this->hasMany(SellerReview::class, 'product_id');
+    }
 }

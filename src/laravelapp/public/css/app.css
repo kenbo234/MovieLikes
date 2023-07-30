@@ -11992,3 +11992,9 @@ textarea.form-control-lg {
 .custom-search-input .btn {
   font-size: 160%;
 }
+
+/* CSSファイルに追加するスタイル */
+.star {
+  color: yellow;
+  font-size: 16px; /* フォントサイズを調整して星マークの大きさを変えることもできます */
+}
