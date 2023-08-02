@@ -67,4 +67,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(SellerReview::class, 'user_id');
     }
+
+    public function favoriteProducts()
+    {
+        return $this->belongsToMany(Product::class, 'favorites');
+    }
 }

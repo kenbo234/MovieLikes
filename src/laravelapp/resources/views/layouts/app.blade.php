@@ -69,6 +69,10 @@
                                         {{ __('マイページ') }}
                                     </a>
 
+                                    <a class="dropdown-item" href="/favorite">
+                                        {{ __('お気に入り') }}
+                                    </a>
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>

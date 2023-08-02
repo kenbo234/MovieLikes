@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\SellerReviewController;
+use App\Http\Controllers\FavoriteController;
 
 
 
@@ -34,6 +35,8 @@ Route::post('/mypage/update', [MyPageController::class, 'update'])->name('mypage
 Route::get('/mypage/products', [MyPageController::class, 'products'])->name('mypage.products');// 出品履歴
 Route::post('/mypage/products/{id}/cancel', [MyPageController::class, 'cancelProduct'])->name('mypage.product.cancel');
 Route::get('/mypage/purchases', [MyPageController::class, 'purchases'])->name('mypage.purchases'); // 購入履歴
+
+Route::get('/favorite', [FavoriteController::class, 'showFavorites'])->name('favorite'); //お気に入り
 
 Route::get('/show_seller_review_form/{product_id}', [SellerReviewController::class, 'showReviewForm'])->name('show_seller_review_form'); // 出品者へのレビュー
 Route::post('/save_seller_review', [SellerReviewController::class, 'saveReview'])->name('save_seller_review');
