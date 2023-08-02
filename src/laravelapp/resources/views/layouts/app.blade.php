@@ -11,6 +11,10 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/favorite.js') }}" defer></script> --}}
+    <!-- SweetAlert2のCDN -->
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script> --}}
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -67,6 +71,10 @@
 
                                     <a class="dropdown-item" href="/mypage">
                                         {{ __('マイページ') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="/favorite">
+                                        {{ __('お気に入り') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

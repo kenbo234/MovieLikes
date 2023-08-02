@@ -61,7 +61,7 @@
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <a href="{{ route('products.show', ['id' => $product->id]) }}" class="btn btn-sm btn-outline-secondary">詳細</a>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">お気に入り</button>
+                      <a href="{{ route('toggleFavorite', ['product_id' => $product->id]) }}" class="btn btn-sm btn-outline-secondary toggle-favorite">お気に入り</a>
                     </div>
                   </div>
                 </div>

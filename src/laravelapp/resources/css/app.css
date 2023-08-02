@@ -1,3 +1,19 @@
 .bold-text {
   font-weight: bold;
 }
+.custom-search-form {
+  flex: 1;
+}
+
+.custom-search-input {
+  width: 40%;
+}
+.custom-search-input .btn {
+  font-size: 160%;
+}
+
+/* CSSファイルに追加するスタイル */
+.star {
+  color: yellow;
+  font-size: 16px; /* フォントサイズを調整して星マークの大きさを変えることもできます */
+}
