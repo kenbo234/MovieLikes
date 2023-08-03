@@ -17,4 +17,9 @@ class Tag extends Model
     {
         return $this->belongsToMany(Product::class, 'product_tag', 'tag_id', 'product_id');
     }
+
+    public function siteReviews()
+    {
+        return $this->hasMany(SiteReview::class);
+    }
 }
