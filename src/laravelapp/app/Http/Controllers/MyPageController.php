@@ -8,14 +8,20 @@ use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Auth\User;
 use App\Models\Product;
 use App\Models\Purchase;
+use App\Models\Coupon;
 
 class MyPageController extends Controller
 {
     public function show()
     {
+         // ログインしているユーザーの情報を取得
         $user = Auth::User();
+
+        // ログインしているユーザーのクーポン一覧を取得
+        $userCoupons = Coupon::where('user_id', auth()->user()->id)->get();
+
         // 必要なデータを取得してマイページのビューに渡す
-        return view('mypage.show', compact('user'));
+        return view('mypage.show', compact('user','userCoupons'));
     }
 
     public function edit()

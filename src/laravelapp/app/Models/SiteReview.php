@@ -24,4 +24,5 @@ class SiteReview extends Model
     {
         return $this->belongsTo(Tag::class);
     }
+
 }
