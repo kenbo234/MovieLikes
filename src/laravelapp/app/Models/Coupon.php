@@ -15,12 +15,6 @@ class Coupon extends Model
         'used',    // クーポンが使用されたかどうかのフラグ
         // 'site_review_id'
     ];
-
-    // // クーポンとサイトレビューの関連付け
-    // public function siteReview()
-    // {
-    //     return $this->belongsTo(SiteReview::class);
-    // }
     
     // クーポンとユーザーの関連付け
     public function user()
