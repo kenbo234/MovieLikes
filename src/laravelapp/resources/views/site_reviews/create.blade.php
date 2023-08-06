@@ -36,7 +36,7 @@
             </div>
             @endif
 
-            <button type="submit" class="btn btn-primary">保存</button>
+            <button type="submit" class="btn btn-primary">送信</button>
         </form>
     </div>
 @endsection
