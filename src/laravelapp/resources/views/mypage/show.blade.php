@@ -28,6 +28,12 @@
 <div class="container mt-3">
     <a href="{{ route('mypage.products') }}" class="btn btn-primary">出品した商品</a>
     <a href="{{ route('mypage.purchases') }}" class="btn btn-success">購入履歴</a>
+    <h2>クーポン</h2>
+    <ul>
+        @foreach($userCoupons as $coupon)
+            <li>{{ $coupon->price }}円のクーポン</li>
+        @endforeach
+    </ul>
     
 
 </div>

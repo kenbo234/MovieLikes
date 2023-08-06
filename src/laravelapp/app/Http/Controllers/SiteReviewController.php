@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\SiteReview;
 use App\Models\User;
 use App\Models\Tag;
+use App\Models\Coupon;
 
 class SiteReviewController extends Controller
 {
@@ -46,6 +47,16 @@ class SiteReviewController extends Controller
         $siteReview->tag_id = $request->tag_id;
         $siteReview->comment = $request->comment;
         $siteReview->save();
+
+        // クーポンを差し上げる処理
+        $user = User::find($request->user_id);
+        if ($user) {
+            $couponAmount = 500; // クーポンの金額
+            $coupon = new Coupon([
+                'price' => $couponAmount
+            ]);
+            $siteReview->coupon()->save($coupon);
+        }
 
         // リダイレクトして一覧ページに戻る
         return redirect()->route('site_reviews.index')->with('success', 'サイトレビューが作成されました');
