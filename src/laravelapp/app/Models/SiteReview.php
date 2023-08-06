@@ -24,4 +24,9 @@ class SiteReview extends Model
     {
         return $this->belongsTo(Tag::class);
     }
+
+    // public function coupon()
+    // {
+    //     return $this->hasOne(Coupon::class);
+    // }
 }

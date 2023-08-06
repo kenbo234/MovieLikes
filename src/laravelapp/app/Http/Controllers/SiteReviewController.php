@@ -25,8 +25,11 @@ class SiteReviewController extends Controller
         $users = User::all();
         $tags = Tag::all();
 
+        // 空のSiteReviewモデルを作成してビューに渡す
+        $siteReview = new SiteReview();
+
         // レビュー作成フォームビューを表示
-        return view('site_reviews.create', compact('users', 'tags'));
+        return view('site_reviews.create', compact('users', 'tags','siteReview'));
     }
 
     public function store(Request $request)
@@ -49,18 +52,16 @@ class SiteReviewController extends Controller
         $siteReview->save();
 
         // クーポンを差し上げる処理
-        $user = User::find($request->user_id);
-        if ($user) {
+        $user_id = $request->user_id;
+        if ($user_id) {
             $couponAmount = 500; // クーポンの金額
-            $coupon = new Coupon([
-                'price' => $couponAmount
-            ]);
-            $siteReview->coupon()->save($coupon);
+            $coupon = new Coupon();
+            $coupon->user_id = $user_id;
+            $coupon->price = $couponAmount;
+            $coupon->save();
         }
 
         // リダイレクトして一覧ページに戻る
         return redirect()->route('site_reviews.index')->with('success', 'サイトレビューが作成されました');
     }
-
-    // 他のアクション（show、edit、update、destroyなど）も同様に実装する
 }

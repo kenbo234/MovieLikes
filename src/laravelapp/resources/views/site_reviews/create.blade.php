@@ -7,6 +7,9 @@
             @csrf
 
             <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+            
+            <!-- 隠しフィールドにサイトレビューのIDを埋め込む -->
+            {{-- <input type="hidden" name="site_review_id" value="{{ $siteReview->id }}"> --}}
 
             <div class="form-group">
               <label for="tag_id">タグ</label>
@@ -22,6 +25,16 @@
                 <label for="comment">コメント</label>
                 <textarea name="comment" id="comment" rows="5" class="form-control"></textarea>
             </div>
+
+            @if ($errors->any())
+            <div class="alert alert-danger">
+              <ul>
+               @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+               @endforeach
+              </ul>
+            </div>
+            @endif
 
             <button type="submit" class="btn btn-primary">保存</button>
         </form>
