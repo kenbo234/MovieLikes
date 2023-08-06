@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\SellerReviewController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\SiteReviewController;
 
 
 
@@ -42,7 +43,9 @@ Route::get('/toggleFavorite/{product_id}', [FavoriteController::class, 'toggleFa
 Route::get('/show_seller_review_form/{product_id}', [SellerReviewController::class, 'showReviewForm'])->name('show_seller_review_form'); // 出品者へのレビュー
 Route::post('/save_seller_review', [SellerReviewController::class, 'saveReview'])->name('save_seller_review');
 
-
+Route::get('/site_reviews', [SiteReviewController::class, 'index'])->name('site_reviews.index'); // サイトレビュー一覧表示
+Route::get('/site_reviews/create', [SiteReviewController::class, 'create'])->name('site_reviews.create'); // サイトレビュー作成フォーム表示
+Route::post('/site_reviews', [SiteReviewController::class, 'store'])->name('site_reviews.store'); // サイトレビュー保存処理
 
 Route::get('/products/search',[ProductController::class, 'search'])->name('products.search'); // 検索
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show'); // 商品詳細ページ

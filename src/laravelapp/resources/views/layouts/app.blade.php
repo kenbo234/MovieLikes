@@ -77,6 +77,10 @@
                                         {{ __('お気に入り') }}
                                     </a>
 
+                                    <a class="dropdown-item" href="/site_reviews">
+                                        {{ __('レビュー') }}
+                                    </a>
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
