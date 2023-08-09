@@ -12,7 +12,7 @@
                         @foreach ($purchases as $purchase)
                             <div class="col-md-4">
                                 <div class="card mb-4 box-shadow">
-                                    <img class="card-img-top" src="{{ asset('storage/' . $purchase->product->images->first()->image_url) }}" alt="商品画像">
+                                    <img class="card-img-top" src="{{ asset('storage/' . $purchase->product->images->first()->image_url) }}" alt="商品画像" style="height: 225px; width: 100%;">
                                     <div class="card-body">
                                         <p class="card-text">購入日時: {{ $purchase->purchased_at }}</p>
                                         <p class="card-text">商品名: {{ $purchase->product->name }}</p>
