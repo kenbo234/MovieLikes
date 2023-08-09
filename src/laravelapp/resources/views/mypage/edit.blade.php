@@ -13,7 +13,7 @@
                                 <label for="username" class="col-md-4 col-form-label text-md-end">{{ __('ユーザー名') }}</label>
                                 <div class="col-md-6">
                                     <input type="text" name="username" id="username" value="{{ $user->username }}"
-                                        required>
+                                        required autofocus>
                                 </div>
                             </div>
                             <div class="row mb-3">
