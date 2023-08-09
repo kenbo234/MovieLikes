@@ -21,7 +21,7 @@
       <div class="navbar navbar-dark bg-dark box-shadow">
           <div class="container d-flex justify-content-between">
               <a href="#" class="navbar-brand d-flex align-items-center">
-                  <strong>映画たち</strong>
+                  <strong>Movies</strong>
               </a>
               <form action="{{ route('products.search') }}" method="GET" class="form-inline my-2 my-lg-0 custom-search-input">
                   <div class="input-group">
