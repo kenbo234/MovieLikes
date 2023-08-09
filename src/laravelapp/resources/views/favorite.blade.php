@@ -12,9 +12,9 @@
                             <div class="col-md-4">
                                 <div class="card mb-4 box-shadow">
                                     @if ($product->images->isNotEmpty())
-                                        <img src="{{ asset('storage/' . $product->images->first()->image_url) }}" alt="商品画像">
+                                        <img src="{{ asset('storage/' . $product->images->first()->image_url) }}" alt="商品画像" style="height: 225px; width: 100%;">
                                     @else
-                                        <img class="card-img-top" src="{{ asset('placeholder.jpg') }}" alt="No Image">
+                                        <img class="card-img-top" src="{{ asset('placeholder.jpg') }}" alt="No Image" style="height: 225px; width: 100%;">
                                     @endif
                                     <div class="card-body">
                                         <p class="card-text">{{ $product->name }}</p>
