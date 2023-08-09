@@ -15,7 +15,7 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('商品名') }}</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" name="name" id="name" required>
+                                    <input type="text" name="name" id="name" class="form-control" required>
                                     @error('name')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -27,7 +27,7 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('商品説明') }}</label>
 
                                 <div class="col-md-6">
-                                    <textarea name="description" id="description" required></textarea>
+                                    <textarea name="description" id="description" class="form-control" required></textarea>
                                     @error('description')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -35,11 +35,12 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="description"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('商品説明') }}</label>
+                                <label for="price"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('価格') }}</label>
+
                                 <div class="col-md-6">
-                                    <textarea name="description" id="description" required></textarea>
-                                    @error('description')
+                                    <input name="price" id="price" class="form-control" required>
+                                    @error('price')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -48,8 +49,9 @@
                             <div class="row mb-3">
                                 <label for="category_id"
                                     class="col-md-4 col-form-label text-md-end">{{ __('カテゴリー') }}</label>
+
                                 <div class="col-md-6">
-                                    <select name="category_id" id="category_id" required>
+                                    <select name="category_id" id="category_id" class="form-control" required>
                                         <option value="">カテゴリーを選択してください</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -64,8 +66,10 @@
                             <div class="row mb-3">
                                 <label for="tags"
                                     class="col-md-4 col-form-label text-md-end">{{ __('タグ') }}</label>
+
                                 <div class="col-md-6">
-                                    <input type="text" name="tags[]" id="tags" placeholder="タグを入力してください">
+                                    <input type="text" name="tags[]" id="tags" class="form-control"
+                                        placeholder="タグを入力してください">
                                     @error('tags')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -75,6 +79,7 @@
                             <div class="row mb-3">
                                 <label for="image"
                                     class="col-md-4 col-form-label text-md-end">{{ __('画像') }}</label>
+
                                 <div class="col-md-6">
                                     <input type="file" name="image" id="image" class="form-control-file"
                                         accept="image/*" required>
