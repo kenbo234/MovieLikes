@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>出品者へのレビューフォーム</h1>
+        <h1>出品者へのレビュー</h1>
         <p>商品名：{{ $product->name }}</p>
         
         @if(session('success'))
