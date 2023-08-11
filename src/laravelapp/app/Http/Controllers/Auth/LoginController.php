@@ -32,6 +32,15 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/top';
+
+    /**
+     * ログアウトしたときの画面遷移先
+     */
+    protected function loggedOut(\Illuminate\Http\Request $request)
+    {
+        return redirect('/top');
+    }
+
     /**
      * Create a new controller instance.
      *
