@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
@@ -29,6 +30,8 @@ Route::get('/', function () {
 });
 
 Route::get('/top', [ProductController::class, 'index'])->name('products.index');
+
+Route::get('/guest_login', [LoginController::class, 'guestLogin'])->name('guest.login');
 
 Route::get('/mypage', [MyPageController::class, 'show'])->name('mypage.show'); // マイページ
 Route::get('/mypage/edit', [MyPageController::class, 'edit'])->name('mypage.edit'); // マイページ編集
