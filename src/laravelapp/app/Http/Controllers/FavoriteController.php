@@ -14,7 +14,7 @@ class FavoriteController extends Controller
     public function showFavorites()
     {
         // ログインユーザーがお気に入りした商品を取得
-        $favoriteProducts = Auth::user()->favoriteProducts;
+        $favoriteProducts = Auth::user()->favoriteProducts()->paginate(12);
 
         // お気に入りした商品をビューに渡して表示
         return view('favorite', compact('favoriteProducts'));
