@@ -63,7 +63,7 @@ class MyPageController extends Controller
     public function products()
     {
         $user = Auth::user();
-        $products = $user->products;
+        $products = $user->products()->paginate(12);
     
         return view('mypage.products', compact('products'));
     }
@@ -90,7 +90,7 @@ class MyPageController extends Controller
     public function purchases()
     {
         $user = Auth::user();
-        $purchases = Purchase::where('user_id', $user->id)->orderByDesc('purchased_at')->get();
+        $purchases = Purchase::where('user_id', $user->id)->orderByDesc('purchased_at')->paginate(12);
 
         return view('mypage.purchases', compact('purchases'));
     }

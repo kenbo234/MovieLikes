@@ -8,7 +8,8 @@
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
                             @if ($product->images->isNotEmpty())
-                                <img src="{{ asset('storage/' . $product->images->first()->image_url) }}" alt="商品画像" style="height: 225px; width: 100%;">
+                                <img src="{{ asset('storage/' . $product->images->first()->image_url) }}" alt="商品画像"
+                                    style="height: 225px; width: 100%;">
                             @else
                                 <img src="{{ asset('images/default_product_image.jpg') }}" alt="デフォルト商品画像">
                             @endif
@@ -33,7 +34,8 @@
             </div>
         </div>
     </div>
-
+    <!-- ページネーション -->
+    {{ $products->links() }}
 
     @if (session('success'))
         <div class="alert alert-success">
