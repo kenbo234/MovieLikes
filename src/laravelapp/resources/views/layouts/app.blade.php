@@ -51,6 +51,12 @@
                                 </li>
                             @endif
 
+                            @if (Route::has('guest.login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('guest.login') }}">{{ __('ゲストログイン') }}</a>
+                                </li>
+                            @endif
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('会員登録') }}</a>
