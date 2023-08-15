@@ -31,7 +31,7 @@ Route::get('/', function () {
 
 Route::get('/top', [ProductController::class, 'index'])->name('products.index');
 
-Route::get('/guest_login', [LoginController::class, 'guestLogin'])->name('guest.login');
+Route::get('/guest_login', [LoginController::class, 'guestLogin'])->name('guest.login'); //ゲストログイン
 
 Route::get('/mypage', [MyPageController::class, 'show'])->name('mypage.show'); // マイページ
 Route::get('/mypage/edit', [MyPageController::class, 'edit'])->name('mypage.edit'); // マイページ編集
