@@ -67,18 +67,18 @@
                                 <div class="card-body">
                                     <p class="card-text">{{ $product->name }}</p>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
+                                        <div class="btn-group align-items-center">
                                             <a href="{{ route('products.show', ['id' => $product->id]) }}"
                                                 class="btn btn-sm btn-outline-secondary">詳細</a>
                                             <!-- お気に入りアイコン -->
                                             @if ($product->isFavorite())
                                                 <a href="{{ route('toggleFavorite', ['product_id' => $product->id]) }}"
-                                                    class="btn btn-sm btn-outline-secondary toggle-favorite">
+                                                    class="btn btn-sm btn-outline-secondary toggle-favorite" style="padding: 7.8;">
                                                     <i class="fas fa-heart" style="color: #e00000;"></i> <!-- ハートのアイコン -->
                                                 </a>
                                             @else
                                                 <a href="{{ route('toggleFavorite', ['product_id' => $product->id]) }}"
-                                                    class="btn btn-sm btn-outline-secondary toggle-favorite">
+                                                    class="btn btn-sm btn-outline-secondary toggle-favorite" style="padding: 7.8;">
                                                     <i class="far fa-heart" style="color: #e00000;"></i> <!-- ハートのアウトラインアイコン -->
                                                 </a>
                                             @endif
