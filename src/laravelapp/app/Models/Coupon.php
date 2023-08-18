@@ -9,6 +9,8 @@ class Coupon extends Model
 {
     use HasFactory;
 
+    protected $table = "coupons";
+
     protected $fillable = [
         'user_id', // クーポンを発行するユーザーのID
         'price',   // クーポンの金額
