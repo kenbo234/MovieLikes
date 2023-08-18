@@ -58,4 +58,10 @@ class Product extends Model
     {
         return $this->belongsToMany(User::class, 'favorites');
     }
+
+    public function isFavorite()
+    {
+        // ユーザーがこの商品をお気に入りに登録しているかどうかをチェック
+        return $this->favoritedByUsers->contains(auth()->user());
+    }
 }
