@@ -28,7 +28,7 @@
                     class="form-inline my-2 my-lg-0 custom-search-input">
                     <div class="input-group">
                         <input type="text" name="keyword" class="form-control" placeholder="キーワードを入力してください"
-                            aria-label="Search">
+                            aria-label="Search" value="{{ trim(request('keyword')) }}">
                         <div class="input-group-append">
                             <button class="btn btn-outline-light" type="submit"><i class="fa fa-search"></i></button>
                         </div>
