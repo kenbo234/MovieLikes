@@ -7,10 +7,13 @@
                 <div class="card">
                     <div class="card-header">{{ __('プロフィール変更') }}</div>
                     <div class="card-body">
+                        <p class="text-center text-danger">* は必須項目です</p>
+
                         <form action="{{ route('mypage.update') }}" method="POST">
                             @csrf
                             <div class="row mb-3">
-                                <label for="username" class="col-md-4 col-form-label text-md-end">{{ __('ユーザー名') }}</label>
+                                <label for="username" class="col-md-4 col-form-label text-md-end">{{ __('ユーザー名') }}<span
+                                        class="required" style="color: red;">*</span></label>
                                 <div class="col-md-6">
                                     <input type="text" name="username" id="username" value="{{ $user->username }}"
                                         class="form-control" required autofocus>
@@ -18,8 +21,8 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="email"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('メールアドレス') }}</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('メールアドレス') }}<span
+                                        class="required" style="color: red;">*</span></label>
 
                                 <div class="col-md-6">
                                     <input type="email" name="email" id="email" value="{{ $user->email }}"
@@ -28,8 +31,8 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="password"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('パスワード') }}</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('パスワード') }}<span
+                                        class="required" style="color: red;">*</span></label>
 
                                 <div class="col-md-6">
                                     <input type="password" name="password" id="password" class="form-control" required>
@@ -37,8 +40,8 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="zipcode"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('郵便番号') }}</label>
+                                <label for="zipcode" class="col-md-4 col-form-label text-md-end">{{ __('郵便番号') }}<span
+                                        class="required" style="color: red;">*</span></label>
 
                                 <div class="col-md-6">
                                     <input type="text" name="zipcode" id="zipcode" value="{{ $user->zipcode }}"
@@ -47,8 +50,8 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="prefecture"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('都道府県') }}</label>
+                                <label for="prefecture" class="col-md-4 col-form-label text-md-end">{{ __('都道府県') }}<span
+                                        class="required" style="color: red;">*</span></label>
 
                                 <div class="col-md-6">
                                     <input type="text" name="prefecture" id="prefecture" value="{{ $user->prefecture }}"
@@ -57,8 +60,8 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="city"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('市町村') }}</label>
+                                <label for="city" class="col-md-4 col-form-label text-md-end">{{ __('市町村') }}<span
+                                        class="required" style="color: red;">*</span></label>
 
                                 <div class="col-md-6">
                                     <input type="text" name="city" id="city" value="{{ $user->city }}"
@@ -68,7 +71,8 @@
 
                             <div class="row mb-3">
                                 <label for="housenumber"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('番地') }}</label>
+                                    class="col-md-4 col-form-label text-md-end">{{ __('番地') }}<span class="required"
+                                        style="color: red;">*</span></label>
 
                                 <div class="col-md-6">
                                     <input type="text" name="housenumber" id="housenumber"
@@ -87,7 +91,7 @@
                             </div>
 
                             <div class="row justify-content-center">
-                                <div class="col-md-6 offset-md-4" >
+                                <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('更新する') }}
                                     </button>
