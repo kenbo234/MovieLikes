@@ -7,12 +7,14 @@
                 <div class="card">
                     <div class="card-header">{{ __('出品') }}</div>
                     <div class="card-body">
+                        <p class="text-center text-danger">* は必須項目です</p>
+
                         <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row mb-3">
                                 <label for="name"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('商品名') }}</label>
+                                    class="col-md-4 col-form-label text-md-end">{{ __('商品名') }}<span class="required" style="color: red;">*</span></label>
 
                                 <div class="col-md-6">
                                     <input type="text" name="name" id="name" class="form-control" required>
@@ -24,7 +26,7 @@
 
                             <div class="row mb-3">
                                 <label for="description"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('商品説明') }}</label>
+                                    class="col-md-4 col-form-label text-md-end">{{ __('商品説明') }}<span class="required" style="color: red;">*</span></label>
 
                                 <div class="col-md-6">
                                     <textarea name="description" id="description" class="form-control" required></textarea>
@@ -36,7 +38,7 @@
 
                             <div class="row mb-3">
                                 <label for="price"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('価格') }}</label>
+                                    class="col-md-4 col-form-label text-md-end">{{ __('価格') }}<span class="required" style="color: red;">*</span></label>
 
                                 <div class="col-md-6">
                                     <input name="price" id="price" class="form-control" required>
@@ -48,7 +50,7 @@
 
                             <div class="row mb-3">
                                 <label for="category_id"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('カテゴリー') }}</label>
+                                    class="col-md-4 col-form-label text-md-end">{{ __('カテゴリー') }}<span class="required" style="color: red;">*</span></label>
 
                                 <div class="col-md-6">
                                     <select name="category_id" id="category_id" class="form-control" required>
@@ -78,7 +80,7 @@
 
                             <div class="row mb-3">
                                 <label for="image"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('画像') }}</label>
+                                    class="col-md-4 col-form-label text-md-end">{{ __('画像') }}<span class="required" style="color: red;">*</span></label>
 
                                 <div class="col-md-6">
                                     <input type="file" name="image" id="image" class="form-control-file"
