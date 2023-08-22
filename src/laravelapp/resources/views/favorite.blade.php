@@ -24,6 +24,18 @@
                                             <div class="btn-group">
                                                 <a href="{{ route('products.show', ['id' => $product->id]) }}"
                                                     class="btn btn-sm btn-outline-secondary">詳細</a>
+                                                <!-- お気に入りアイコン -->
+                                                @if ($product->favoritedByUsers->contains(auth()->user()))
+                                                    <a href="{{ route('toggleFavorite', ['product_id' => $product->id]) }}"
+                                                        class="btn btn-sm btn-outline-danger toggle-favorite">
+                                                        <i class="fas fa-heart" style="color: #e00000;"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('toggleFavorite', ['product_id' => $product->id]) }}"
+                                                        class="btn btn-sm btn-outline-secondary toggle-favorite">
+                                                        <i class="far fa-heart" style="color: #e00000;"></i>
+                                                    </a>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
