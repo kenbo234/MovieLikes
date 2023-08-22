@@ -73,15 +73,24 @@
                                             <!-- お気に入りアイコン -->
                                             @if ($product->isFavorite())
                                                 <a href="{{ route('toggleFavorite', ['product_id' => $product->id]) }}"
-                                                    class="btn btn-sm btn-outline-secondary toggle-favorite" style="padding: 7.8;">
+                                                    class="btn btn-sm btn-outline-secondary toggle-favorite"
+                                                    style="padding: 7.8;">
                                                     <i class="fas fa-heart" style="color: #e00000;"></i> <!-- ハートのアイコン -->
                                                 </a>
                                             @else
                                                 <a href="{{ route('toggleFavorite', ['product_id' => $product->id]) }}"
-                                                    class="btn btn-sm btn-outline-secondary toggle-favorite" style="padding: 7.8;">
-                                                    <i class="far fa-heart" style="color: #e00000;"></i> <!-- ハートのアウトラインアイコン -->
+                                                    class="btn btn-sm btn-outline-secondary toggle-favorite"
+                                                    style="padding: 7.8;">
+                                                    <i class="far fa-heart" style="color: #e00000;"></i>
+                                                    <!-- ハートのアウトラインアイコン -->
                                                 </a>
                                             @endif
+                                        </div>
+                                        <!-- 出品者の名前を表示するリンク -->
+                                        <div>
+                                            <a href="{{ route('seller.reviews', ['user_id' => $product->user->id]) }}">
+                                                {{ $product->user->username }}さんのレビューを見る
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

@@ -43,7 +43,8 @@ Route::get('/mypage/purchases', [MyPageController::class, 'purchases'])->name('m
 Route::get('/favorite', [FavoriteController::class, 'showFavorites'])->name('favorite'); //お気に入り
 Route::get('/toggleFavorite/{product_id}', [FavoriteController::class, 'toggleFavorite'])->name('toggleFavorite');
 
-Route::get('/show_seller_review_form/{product_id}', [SellerReviewController::class, 'showReviewForm'])->name('show_seller_review_form'); // 出品者へのレビュー
+Route::get('/seller-reviews/{user_id}', [SellerReviewController::class, 'index'])->name('seller.reviews'); //出品者レビュー
+Route::get('/show_seller_review_form/{product_id}', [SellerReviewController::class, 'showReviewForm'])->name('show_seller_review_form'); // 出品者へのレビューフォーム
 Route::post('/save_seller_review', [SellerReviewController::class, 'saveReview'])->name('save_seller_review');
 
 Route::get('/site_reviews', [SiteReviewController::class, 'index'])->name('site_reviews.index'); // サイトレビュー一覧表示
