@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Tag;
 use App\Models\Purchase;
 use App\Models\Image;
+use App\Models\Coupon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -26,7 +27,14 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id); // 指定された商品IDの商品を取得,findOrFailで例外も処理
 
-        return view('products.show', compact('product')); // 商品詳細ページのビューに商品情報を渡す
+        $user = Auth::user();
+
+        // ユーザーが所持しているクーポンの数を取得
+        $userCouponsCount = Coupon::where('user_id', $user->id)
+            ->where('used', false) // 未使用のクーポンを取得
+            ->count();
+
+        return view('products.show', compact('product','user','userCouponsCount')); // 商品詳細ページのビューに商品情報を渡す
     }
 
     public function create()
@@ -123,6 +131,21 @@ class ProductController extends Controller
         }
 
         $user = Auth::user();
+
+        // クーポンを使用するチェックボックスがチェックされている場合、クーポンの処理を追加
+        if (request()->has('use_coupon')) {
+            // 利用可能なクーポンを取得
+            $coupon = Coupon::where('user_id', $user->id)
+                ->where('used', false) // 未使用のクーポンを取得
+                ->first();
+
+            if ($coupon) {
+                // クーポンを使用して価格を計算
+                $product->price -= $coupon->price; // クーポンの金額を差し引く
+                $coupon->used = true; // クーポンを使用済みにする
+                $coupon->save();
+            }
+        }
 
         // 購入情報を保存
         $purchase = new Purchase();
