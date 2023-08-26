@@ -30,7 +30,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('products.index') }}">
+                <a class="navbar-brand" href="{{ route('products.index') }}" style="color: rgb(133, 66, 169); position: static; font-weight: 900;">
                     {{ config('', 'MovieLikes') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
