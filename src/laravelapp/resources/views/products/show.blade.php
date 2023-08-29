@@ -28,9 +28,9 @@
 
         <form action="{{ route('products.purchase', ['id' => $product->id]) }}" method="POST">
             @csrf
-            @if (Auth::check() && $product->user_id !== Auth::user()->id)
+            @if ($product->user_id !== optional(Auth::user())->id)
                 <button class="btn btn-success">購入する</button>
-                @if ($userCouponsCount > 0)
+                @if (Auth::check() && $userCouponsCount > 0)
                     <label>
                         <input type="checkbox" name="use_coupon"> クーポンを使用して購入
                     </label>
