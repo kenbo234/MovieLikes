@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container" style="color: rgb(255, 255, 255); position: static;">
-        <h1>レビュー</h1>
+        <h1>サイトレビュー</h1>
         <form action="{{ route('site_reviews.store') }}" method="POST">
             @csrf
 
@@ -11,7 +11,7 @@
             <!-- 隠しフィールドにサイトレビューのIDを埋め込む -->
             {{-- <input type="hidden" name="site_review_id" value="{{ $siteReview->id }}"> --}}
 
-            <div class="form-group">
+            {{-- <div class="form-group">
               <label for="tag_id">タグ</label>
               <select name="tag_id" id="tag_id" class="form-control">
                   <option value="">任意で選択してください</option>
@@ -19,7 +19,7 @@
                       <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                   @endforeach
               </select>
-            </div>
+            </div> --}}
 
             <div class="form-group">
                 <label for="comment">コメント</label>
