@@ -106,7 +106,7 @@
             </div>
         </nav>
 
-        <main class="py-4" style="background-color: rgb(73, 64, 79) !important;">
+        <main class="py-4" style="background-color: rgb(101, 96, 105) !important;">
             @yield('content')
         </main>
     </div>
@@ -116,7 +116,7 @@
             height: 100%; /* ページ全体の高さを100%に設定 */
         }
         body {
-            background-color: rgb(73, 64, 79) !important;
+            background-color: rgb(101, 96, 105) !important;
         }
     </style>
     

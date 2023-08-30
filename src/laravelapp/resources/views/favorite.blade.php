@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" style="background-color: rgb(73, 64, 79) !important; color: rgb(255, 255, 255); position: static;">
+<div class="container" style="background-color: rgb(101, 96, 105) !important; color: rgb(255, 255, 255); position: static;">
         <h1>お気に入り商品一覧</h1>
 
         @if ($favoriteProducts->isNotEmpty())
-            <div class="album py-5 bg-light" style="background-color: rgb(73, 64, 79) !important;">
+            <div class="album py-5 bg-light" style="bbackground-color: rgb(101, 96, 105) !important;">
                 <div class="container">
                     <div class="row">
                         @foreach ($favoriteProducts as $product)
