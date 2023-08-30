@@ -110,6 +110,16 @@
             @yield('content')
         </main>
     </div>
+
+    <style>
+        html, body {
+            height: 100%; /* ページ全体の高さを100%に設定 */
+        }
+        body {
+            background-color: rgb(73, 64, 79) !important;
+        }
+    </style>
+    
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
