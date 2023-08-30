@@ -18,7 +18,7 @@
                                     <div class="card-body">
                                         <p class="card-text">購入日時: {{ $purchase->purchased_at }}</p>
                                         <p class="card-text">商品名: {{ $purchase->product->name }}</p>
-                                        <p class="card-text">価格: {{ $purchase->price }}</p>
+                                        <p class="card-text">価格: {{ $purchase->price }}円</p>
                                     </div>
                                 </div>
                             </div>

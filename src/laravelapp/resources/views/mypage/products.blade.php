@@ -25,7 +25,7 @@
                                             <button type="submit" class="btn btn-sm btn-outline-danger">出品取り消し</button>
                                         </form>
                                     </div>
-                                    <small class="text-muted">価格: {{ $product->price }}</small>
+                                    <small class="text-muted">価格: {{ $product->price }}円</small>
                                 </div>
                             </div>
                         </div>
