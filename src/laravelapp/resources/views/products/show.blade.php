@@ -14,7 +14,7 @@
                             <!-- 商品画像表示 -->
                             @if ($product->images->isNotEmpty())
                                 <img src="{{ asset('storage/' . $product->images->first()->image_url) }}" alt="商品画像"
-                                    class="product-image">
+                                    class="product-image" style="object-fit: contain; max-height: 300px; width: 100%;">
                             @else
                                 <p>画像はありません</p>
                             @endif
