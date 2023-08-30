@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="color: rgb(255, 255, 255); position: static;">
         <h1>レビュー</h1>
         <form action="{{ route('site_reviews.store') }}" method="POST">
             @csrf

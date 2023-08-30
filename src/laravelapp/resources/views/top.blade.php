@@ -47,7 +47,7 @@
                 {{ session('success') }}
             </div>
         @endif
-        <div class="album py-5 bg-light" style="background-color: rgb(234, 231, 249) !important;">
+        <div class="album py-5 bg-light" style="background-color: rgb(73, 64, 79) !important;">
             <div class="container">
 
                 <div class="row">
