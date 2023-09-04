@@ -30,7 +30,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('products.index') }}">
+                <a class="navbar-brand" href="{{ route('products.index') }}" style="color: rgb(133, 66, 169); position: static; font-weight: 900;">
                     {{ config('', 'MovieLikes') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -106,10 +106,20 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4" style="background-color: rgb(101, 96, 105) !important;">
             @yield('content')
         </main>
     </div>
+
+    <style>
+        html, body {
+            height: 100%; /* ページ全体の高さを100%に設定 */
+        }
+        body {
+            background-color: rgb(101, 96, 105) !important;
+        }
+    </style>
+    
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>

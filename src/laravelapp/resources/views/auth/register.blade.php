@@ -5,9 +5,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('会員登録') }}</div>
+                    <div class="card-header" style="background-color: rgb(95, 63, 120); color: rgb(252, 252, 253);">{{ __('会員登録') }}</div>
 
-                    <div class="card-body">
+                    <div class="card-body" style="background-color: rgb(241, 235, 244);">
                         <p class="text-center text-danger">* は必須項目です</p>
 
                         <form method="POST" action="{{ route('register') }}">

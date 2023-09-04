@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="color: rgb(255, 255, 255); position: static;">
         <h1>出品者へのレビュー</h1>
         <p>商品名：{{ $product->name }}</p>
 

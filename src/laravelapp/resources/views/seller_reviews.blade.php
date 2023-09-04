@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="color: rgb(255, 255, 255); position: static;">
         <h1>{{ $user->username }}さんのレビュー</h1>
 
         @if ($reviews->isEmpty())

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="album py-5 bg-light">
+    <div class="album py-5 bg-light" style="background-color: rgb(101, 96, 105) !important;">
         <div class="container">
             <div class="row">
                 @foreach ($products as $product)
@@ -25,7 +25,7 @@
                                             <button type="submit" class="btn btn-sm btn-outline-danger">出品取り消し</button>
                                         </form>
                                     </div>
-                                    <small class="text-muted">価格: {{ $product->price }}</small>
+                                    <small class="text-muted">価格: {{ $product->price }}円</small>
                                 </div>
                             </div>
                         </div>

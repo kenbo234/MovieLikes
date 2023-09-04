@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="color: rgb(255, 255, 255); position: static;">
         <h1>レビュー一覧</h1>
         @if(session('success'))
             <div class="alert alert-success">
@@ -16,7 +16,7 @@
                 <tr>
                     <th>#</th>
                     <th>ユーザー名</th>
-                    <th>タグ</th>
+                    {{-- <th>タグ</th> --}}
                     <th>コメント</th>
                     <th>作成日時</th>
                 </tr>
@@ -26,7 +26,7 @@
                     <tr>
                         <td>{{ $siteReview->id }}</td>
                         <td>{{ $siteReview->user->username }}</td>
-                        <td>{{ $siteReview->tag ? $siteReview->tag->name : 'タグなし' }}</td>
+                        {{-- <td>{{ $siteReview->tag ? $siteReview->tag->name : 'タグなし' }}</td> --}}
                         <td>{{ $siteReview->comment }}</td>
                         <td>{{ $siteReview->created_at }}</td>
                     </tr>

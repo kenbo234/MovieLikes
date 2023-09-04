@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="background-color: rgb(101, 96, 105) !important; color: rgb(255, 255, 255); position: static;">
         <h1>購入履歴</h1>
         @if ($purchases->isEmpty())
             <p>購入履歴はありません。</p>
         @else
-            <div class="album py-5 bg-light">
+            <div class="album py-5 bg-light" style="background-color: rgb(101, 96, 105) !important;">
                 <div class="container">
                     <div class="row">
                         @foreach ($purchases as $purchase)
@@ -18,7 +18,7 @@
                                     <div class="card-body">
                                         <p class="card-text">購入日時: {{ $purchase->purchased_at }}</p>
                                         <p class="card-text">商品名: {{ $purchase->product->name }}</p>
-                                        <p class="card-text">価格: {{ $purchase->price }}</p>
+                                        <p class="card-text">価格: {{ $purchase->price }}円</p>
                                     </div>
                                 </div>
                             </div>

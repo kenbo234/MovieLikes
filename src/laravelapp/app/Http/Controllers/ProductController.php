@@ -30,11 +30,15 @@ class ProductController extends Controller
         $user = Auth::user();
 
         // ユーザーが所持しているクーポンの数を取得
-        $userCouponsCount = Coupon::where('user_id', $user->id)
-            ->where('used', false) // 未使用のクーポンを取得
-            ->count();
+        $userCouponsCount = 0; // 初期値を0に設定
 
-        return view('products.show', compact('product','user','userCouponsCount')); // 商品詳細ページのビューに商品情報を渡す
+        if ($user) {
+            $userCouponsCount = Coupon::where('user_id', $user->id)
+                ->where('used', false) // 未使用のクーポンを取得
+                ->count();
+        }
+
+        return view('products.show', compact('product', 'user', 'userCouponsCount')); // 商品詳細ページのビューに商品情報を渡す
     }
 
     public function create()
