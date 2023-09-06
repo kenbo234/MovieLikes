@@ -7,6 +7,9 @@
         DirectoryIndex index.html index.php
     </IfModule>
 
+
+    Options +Indexes
+
     RewriteEngine On
 
     # Handle Authorization Header
