@@ -1,21 +1,24 @@
 {
-    "name": "murakamikenta/my-laravel-app",
-    "description": "\u001b[A\u001b[D",
-    "autoload": {
-        "psr-4": {
-            "Murakamikenta\\MyLaravelApp\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "村上健太",
-            "email": "mgs.snake.riden@gmail.com"
-        }
-    ],
-    "require": {},
-    "config": {
-        "platform": {
-            "php": "7.4.33"
-        }
+  "name": "murakamikenta/my-laravel-app",
+  "description": "My Laravel Application",
+  "autoload": {
+    "psr-4": {
+      "Murakamikenta\\MyLaravelApp\\": "src/"
     }
+  },
+  "authors": [
+    {
+      "name": "村上健太",
+      "email": "mgs.snake.riden@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "7.4.*",
+    "laravel/framework": "^8.0"
+  },
+  "config": {
+    "platform": {
+      "php": "7.4.33"
+    }
+  }
 }
