@@ -8,7 +8,7 @@
         }
     ],
     "scripts": {
-        "post-install-cmd":"composer install --working-dir=/app/src/laravelapp" 
+        "post-install-cmd":"cd src/laravelapp && composer install" 
     }
     
 }
