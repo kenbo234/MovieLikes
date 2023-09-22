@@ -13,14 +13,14 @@
         }
     ],
     "require": {
-        "php": "7.4.33",
+        "php": "8.1.6",
         "laravel/framework": "^8.0",
         "monolog/monolog":  "^2.0"
     },
     "config": {
         "bin-dir": "vendor/bin",
         "platform": {
-            "php": "7.4.33"
+            "php": "8.1.6"
         }
     }
 }
