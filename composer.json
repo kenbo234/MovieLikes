@@ -1,26 +1,14 @@
 {
     "name": "murakamikenta/my-laravel-app",
     "description": "\u001b[A\u001b[D",
-    "autoload": {
-        "psr-4": {
-            "Murakamikenta\\MyLaravelApp\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "村上健太",
             "email": "mgs.snake.riden@gmail.com"
         }
     ],
-    "require": {
-        "php": "8.1.6",
-        "laravel/framework": "^8.0",
-        "monolog/monolog":  "^2.0"
-    },
-    "config": {
-        "bin-dir": "vendor/bin",
-        "platform": {
-            "php": "8.1.6"
-        }
+    "scripts": {
+        "start":"composer install --working-dir=/app/src/laravelapp" 
     }
+    
 }
