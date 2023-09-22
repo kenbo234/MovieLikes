@@ -1,1 +1,1 @@
-web: cd src/laravelapp && heroku-php-apache2 public/
+web: heroku-php-apache2 src/laravelapp/public/
