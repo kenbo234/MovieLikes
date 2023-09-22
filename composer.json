@@ -8,7 +8,7 @@
         }
     ],
     "scripts": {
-        "post-install-cmd":"cd src/laravelapp && composer install" 
+        "post-update-cmd":"cd src/laravelapp && composer install" 
     }
     
 }
