@@ -31,14 +31,14 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/top';
+    protected $redirectTo = '/';
 
     /**
      * ログアウトしたときの画面遷移先
      */
     protected function loggedOut(\Illuminate\Http\Request $request)
     {
-        return redirect('/top');
+        return redirect('/');
     }
 
     /**

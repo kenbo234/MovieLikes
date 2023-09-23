@@ -26,10 +26,10 @@ use App\Http\Controllers\SiteReviewController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('top');
 });
 
-Route::get('/top', [ProductController::class, 'index'])->name('products.index');
+Route::get('/', [ProductController::class, 'index'])->name('products.index');
 
 Route::get('/guest_login', [LoginController::class, 'guestLogin'])->name('guest.login'); //ゲストログイン
 
