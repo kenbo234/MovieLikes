@@ -55,7 +55,7 @@
                         <div class="col-md-4">
                             <div class="card mb-4 box-shadow">
                                 @if ($product->images->isNotEmpty())
-                                    <img src="{{ asset('storage/' . $product->images->first()->image_url) }}" alt="商品画像"
+                                    <img src="{{ Storage::disk('s3')->url($product->images->first()->image_url) }}" alt="商品画像"
                                         style="height: 225px; width: 100%;">
                                 @else
                                     <img class="card-img-top"
