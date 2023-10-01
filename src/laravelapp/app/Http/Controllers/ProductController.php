@@ -103,8 +103,7 @@ class ProductController extends Controller
         }
 
         // 画像をアップロードして保存先のパスを取得
-        $imagePath = $request->file('image')->store('images', 'public');
-
+        $imagePath = $request->file('image')->store('images', 's3');
 
         // Imageモデルに新しいレコードを作成し、データベースに保存
         $image = new Image();
