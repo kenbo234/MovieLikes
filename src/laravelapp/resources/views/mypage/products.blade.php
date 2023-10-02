@@ -1,15 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="album py-5 bg-light" style="background-color: rgb(101, 96, 105) !important;">
-        <div class="container">
+<div class="album py-5 bg-light" style="background-color: rgb(101, 96, 105) !important; color: rgb(255, 255, 255); position: static;">
+    <div class="container">
+        <h1>出品した商品</h1> <!-- 見出しを追加 -->
+
+        @if ($products->isEmpty())
+            <p>出品した商品はありません。</p> <!-- 商品がない場合のメッセージ -->
+        @else
             <div class="row">
                 @foreach ($products as $product)
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
                             @if ($product->images->isNotEmpty())
-                                <img src="{{ Storage::disk('s3')->url($product->images->first()->image_url) }}" alt="商品画像"
-                                    style="height: 225px; width: 100%;">
+                                <img src="{{ Storage::disk('s3')->url($product->images->first()->image_url) }}"
+                                    alt="商品画像" style="height: 225px; width: 100%;">
                             @else
                                 <img src="{{ asset('images/default_product_image.jpg') }}" alt="デフォルト商品画像">
                             @endif
@@ -32,15 +37,15 @@
                     </div>
                 @endforeach
             </div>
-        </div>
+        @endif
     </div>
-    <!-- ページネーション -->
-    {{ $products->links() }}
+</div>
+<!-- ページネーション -->
+{{ $products->links() }}
 
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
     </div>
+@endif
 @endsection
