@@ -5,7 +5,7 @@
         <h1>お気に入り商品一覧</h1>
 
         @if ($favoriteProducts->isNotEmpty())
-            <div class="album py-5 bg-light" style="bbackground-color: rgb(101, 96, 105) !important;">
+            <div class="album py-5" style="bbackground-color: rgb(101, 96, 105) !important;">
                 <div class="container">
                     <div class="row">
                         @foreach ($favoriteProducts as $product)
