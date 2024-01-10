@@ -80,10 +80,6 @@ class RegisterController extends Controller
         'buildingname' => $data['buildingname'],
     ]);
 
-    // if (!$user) {
-    //     dd('User creation failed:', $user);
-    // }
-// dd($user);
 
     return $user;
 }

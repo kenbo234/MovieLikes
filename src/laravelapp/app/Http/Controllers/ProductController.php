@@ -67,7 +67,6 @@ class ProductController extends Controller
 
         ]);
 
-        // dd($validatedData); // バリデートされたデータを確認
 
         $user_id = auth()->user()->id; // ログインユーザーのIDを取得
 
